@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QA Portfolio - Anubhava Srivastava | Testing Exploring">
+    <title>Anubhava Srivastava | QA Portfolio | Testing Exploring</title>
+    <!--
+        CUSTOMIZATION GUIDE:
+        - Profile Photo: Replace the data:image/svg+xml in .profile-photo with your actual photo URL
+        - Name: Change "Anubhava Srivastava" in .profile-name
+        - Tagline: Change "QA Engineer | Testing Exploring" in .profile-tagline
+        - Bio: Edit the .bio-text paragraph in #about section
+        - Links: Update href values in .social-links (LinkedIn, GitHub, Email)
+        - Skills: Modify skill items in #skills section
+        - Projects: Edit project cards in #projects section
+        - Test Cases: Update test cases in #checklist section
+    -->
+    <style>
+        /* ===== CSS Variables & Reset ===== */
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --border-color: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --accent-primary: #58a6ff;
+            --accent-secondary: #3fb950;
+            --accent-danger: #f85149;
+            --accent-warning: #d29922;
+            --accent-purple: #a371f7;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition: 0.2s ease;
+            --font-mono: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #ffffff;
+                --bg-secondary: #f6f8fa;
+                --bg-tertiary: #eaeef2;
+                --border-color: #d0d7de;
+                --text-primary: #24292f;
+                --text-secondary: #57606a;
+                --text-muted: #6e7781;
+                --accent-primary: #0969da;
+                --accent-secondary: #1a7f37;
+                --accent-danger: #cf222e;
+                --accent-warning: #9a6700;
+                --accent-purple: #8250df;
+                --shadow-sm: 0 1px 2px rgba(0,0,0,0.08);
+                --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+                --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4 { font-weight: 600; line-height: 1.3; }
+        h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h2 { font-size: clamp(1.25rem, 3vw, 1.75rem); margin-bottom: 1rem; }
+        h3 { font-size: 1rem; }
+        p { color: var(--text-secondary); }
+        a { color: var(--accent-primary); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--accent-secondary); text-decoration: underline; }
+        code { font-family: var(--font-mono); font-size: 0.9em; background: var(--bg-tertiary); padding: 0.15em 0.4em; border-radius: var(--radius-sm); }
+
+        /* ===== Layout ===== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--accent-primary), var(--accent-purple));
+            border-radius: 2px;
+        }
+
+        /* ===== Profile Header ===== */
+        .profile-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--border-color);
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bg-primary);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition), box-shadow var(--transition);
+            /* REPLACE: background-image: url('your-photo.jpg'); background-size: cover; background-position: center; */
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-name {
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--text-primary), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-tagline {
+            color: var(--accent-primary);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-handle {
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+
+        .social-link:hover {
+            border-color: var(--accent-primary);
+            background: var(--bg-tertiary);
+            color: var(--accent-primary);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* ===== Cards ===== */
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: all var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        /* ===== About Section ===== */
+        .bio-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Skills Section ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 1.25rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .skill-card:hover::before { transform: scaleX(1); }
+
+        .skill-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            color: var(--accent-primary);
+            font-size: 1.5rem;
+        }
+
+        .skill-name { font-weight: 600; font-size: 0.95rem; }
+
+        .skill-category { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem; }
+
+        /* ===== Projects Section ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-badge {
+            background: var(--accent-warning);
+            color: var(--bg-primary);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: var(--radius-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+
+        .project-title { font-size: 1.1rem; flex: 1; }
+
+        .project-description {
+            flex: 1;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        /* ===== Test Case Checklist ===== */
+        .checklist-intro {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .test-case {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            transition: all var(--transition);
+        }
+
+        .test-case:hover { border-color: var(--accent-primary); }
+
+        .test-case.passed { border-color: var(--accent-secondary); background: rgba(63, 185, 80, 0.1); }
+        .test-case.failed { border-color: var(--accent-danger); background: rgba(248, 81, 73, 0.1); }
+
+        .test-case input[type="radio"] { display: none; }
+
+        .test-case label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .radio-custom {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+
+        .test-case input[type="radio"]:checked + .radio-custom {
+            border-color: currentColor;
+            background: currentColor;
+        }
+
+        .test-case.passed .radio-custom { color: var(--accent-secondary); }
+        .test-case.failed .radio-custom { color: var(--accent-danger); }
+
+        .radio-custom::after {
+            content: '✓';
+            font-size: 12px;
+            color: var(--bg-primary);
+            opacity: 0;
+            transform: scale(0);
+            transition: all var(--transition);
+        }
+
+        .test-case input[type="radio"]:checked + .radio-custom::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .test-case.failed .radio-custom::after { content: '✕'; }
+
+        .test-case-info { flex: 1; }
+
+        .test-case-id { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+
+        .test-case-title { font-weight: 500; font-size: 0.95rem; }
+
+        .test-case-steps { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; font-family: var(--font-mono); }
+
+        .test-case-actions { display: flex; gap: 0.5rem; }
+
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: var(--font-mono);
+        }
+
+        .btn-small:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+        .btn-small.pass-btn:hover { border-color: var(--accent-secondary); background: var(--accent-secondary); color: var(--bg-primary); }
+        .btn-small.fail-btn:hover { border-color: var(--accent-danger); background: var(--accent-danger); color: var(--bg-primary); }
+
+        .checklist-summary {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .summary-item { text-align: center; }
+
+        .summary-count { font-size: 2rem; font-weight: 700; font-family: var(--font-mono); line-height: 1; }
+
+        .summary-count.passed { color: var(--accent-secondary); }
+        .summary-count.failed { color: var(--accent-danger); }
+        .summary-count.pending { color: var(--text-muted); }
+
+        .summary-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem; }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 640px) {
+            .container { padding: 1.5rem 1rem; }
+            .section { margin-bottom: 2rem; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
+            .test-case { flex-wrap: wrap; }
+            .test-case-actions { width: 100%; justify-content: flex-end; margin-top: 0.5rem; }
+            .checklist-summary { flex-direction: column; gap: 1rem; }
+            .social-links { flex-direction: column; align-items: center; }
+            .social-link { width: 100%; max-width: 280px; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .profile-photo { width: 100px; height: 100px; font-size: 2.5rem; }
+        }
+
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== Focus Styles ===== */
+        :focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        .social-link:focus-visible,
+        .btn-small:focus-visible,
+        .test-case label:focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ===== Profile Header ===== -->
+        <header class="profile-header section">
+            <!-- REPLACE PROFILE PHOTO: Replace the SVG below with <img src="your-photo.jpg" alt="Anubhava Srivastava" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"> -->
+            <div class="profile-photo" role="img" aria-label="Anubhava Srivastava profile photo">AS</div>
+            <!-- REPLACE NAME: Change "Anubhava Srivastava" below -->
+            <h1 class="profile-name">Anubhava Srivastava</h1>
+            <!-- REPLACE TAGLINE: Change "QA Engineer | Testing Exploring" below -->
+            <p class="profile-tagline">QA Engineer | Testing Exploring</p>
+            <!-- REPLACE HANDLE: Change "@TestingExploring" below -->
+            <p class="profile-handle">@TestingExploring</p>
+
+            <div class="social-links">
+                <!-- REPLACE LINKEDIN: Update href with your LinkedIn profile URL -->
+                <a href="https://linkedin.com/in/your-profile" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <!-- REPLACE GITHUB: Update href with your GitHub profile URL -->
+                <a href="https://github.com/your-username" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <!-- REPLACE EMAIL: Update mailto: with your email address -->
+                <a href="mailto:your.email@example.com" class="social-link" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Email</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- ===== About Section ===== -->
+        <section id="about" class="section" aria-labelledby="about-title">
+            <h2 class="section-title" id="about-title">About Me</h2>
+            <div class="card">
+                <!-- REPLACE BIO: Edit the paragraph below with your own bio -->
+                <p class="bio-text">Passionate QA Engineer dedicated to ensuring software quality through comprehensive testing strategies. Currently exploring the world of test automation with Playwright and Selenium, while building strong foundations in manual testing, API testing, and JavaScript. Committed to continuous learning and sharing knowledge with the testing community through Testing Exploring.</p>
+            </div>
+        </section>
+
+        <!-- ===== Skills Section ===== -->
+        <section id="skills" class="section" aria-labelledby="skills-title">
+            <h2 class="section-title" id="skills-title">Skills</h2>
+            <div class="skills-grid">
+                <!-- Skill: Manual Testing -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="skill-name">Manual Testing</div>
+                    <div class="skill-category">Functional</div>
+                </article>
+                <!-- Skill: Automation Testing -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <div class="skill-name">Automation Testing</div>
+                    <div class="skill-category">Framework</div>
+                </article>
+                <!-- Skill: API Testing -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"/><path d="M12 6v12"/><path d="M6 12h12"/></svg>
+                    </div>
+                    <div class="skill-name">API Testing</div>
+                    <div class="skill-category">Backend</div>
+                </article>
+                <!-- Skill: Playwright -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+                    </div>
+                    <div class="skill-name">Playwright</div>
+                    <div class="skill-category">E2E Automation</div>
+                </article>
+                <!-- Skill: Selenium -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="skill-name">Selenium</div>
+                    <div class="skill-category">Web Automation</div>
+                </article>
+                <!-- Skill: JavaScript -->
+                <article class="skill-card card">
+                    <div class="skill-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M18 16l4-4-4-4"/><path d="M6 8l-4 4 4 4"/><path d="M10 19h4"/></svg>
+                    </div>
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-category">Programming</div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== Projects Section ===== -->
+        <section id="projects" class="section" aria-labelledby="projects-title">
+            <h2 class="section-title" id="projects-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card card">
+                    <div class="project-header">
+                        <h3 class="project-title">E-Commerce Test Suite</h3>
+                        <span class="project-badge">Practice Project</span>
+                    </div>
+                    <p class="project-description">Comprehensive test suite for an e-commerce platform covering user authentication, product search, cart operations, and checkout flow. Includes both positive and negative test scenarios.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Playwright</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                    </div>
+                </article>
+                <!-- Project 2 -->
+                <article class="project-card card">
+                    <div class="project-header">
+                        <h3 class="project-title">REST API Test Framework</h3>
+                        <span class="project-badge">Practice Project</span>
+                    </div>
+                    <p class="project-description">Automated API testing framework for RESTful services with schema validation, data-driven tests, and detailed HTML reporting. Covers CRUD operations, authentication, and error handling.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Postman</span>
+                        <span class="tech-tag">Newman</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                </article>
+                <!-- Project 3 -->
+                <article class="project-card card">
+                    <div class="project-header">
+                        <h3 class="project-title">Selenium WebDriver Framework</h3>
+                        <span class="project-badge">Practice Project</span>
+                    </div>
+                    <p class="project-description">Page Object Model based Selenium framework with TestNG, featuring cross-browser testing, screenshot capture on failure, extent reports, and parallel execution support.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">TestNG</span>
+                        <span class="tech-tag">Maven</span>
+                    </div>
+                </article>
+                <!-- Project 4 -->
+                <article class="project-card card">
+                    <div class="project-header">
+                        <h3 class="project-title">Bug Tracking Dashboard</h3>
+                        <span class="project-badge">Practice Project</span>
+                    </div>
+                    <p class="project-description">Interactive dashboard for visualizing test execution results, defect trends, and release readiness metrics. Built with vanilla JavaScript and Chart.js for real-time updates.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">LocalStorage</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ===== Test Case Checklist ===== -->
+        <section id="checklist" class="section" aria-labelledby="checklist-title">
+            <h2 class="section-title" id="checklist-title">Test Case Checklist</h2>
+            <p class="checklist-intro">Interactive checklist - click Pass/Fail to mark test cases. Results update in real-time.</p>
+            <div class="card">
+                <div class="checklist" id="test-checklist" role="list" aria-label="Test case checklist">
+                    <!-- Test cases are rendered by JavaScript below -->
+                </div>
+                <div class="checklist-summary" aria-live="polite">
+                    <div class="summary-item">
+                        <div class="summary-count passed" id="passed-count">0</div>
+                        <div class="summary-label">Passed</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-count failed" id="failed-count">0</div>
+                        <div class="summary-label">Failed</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-count pending" id="pending-count">5</div>
+                        <div class="summary-label">Pending</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Footer ===== -->
+        <footer class="footer section" role="contentinfo">
+            <p>Built with HTML, CSS & Vanilla JavaScript | Inspired by GitHub Profile Design</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#checklist">Checklist</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">© 2025 Anubhava Srivastava | Testing Exploring</p>
+        </footer>
+    </div>
+
+    <!-- ===== Vanilla JavaScript ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== Test Case Data =====
+            // REPLACE TEST CASES: Modify this array to add/edit/remove test cases
+            const testCases = [
+                { id: 'TC-001', title: 'Verify user login with valid credentials', steps: '1. Navigate to login page → 2. Enter valid email/password → 3. Click Login → 4. Verify dashboard loads' },
+                { id: 'TC-002', title: 'Verify user login with invalid password', steps: '1. Navigate to login page → 2. Enter valid email/invalid password → 3. Click Login → 4. Verify error message' },
+                { id: 'TC-003', title: 'Verify product search functionality', steps: '1. Enter product name in search → 2. Click search → 3. Verify results match query' },
+                { id: 'TC-004', title: 'Verify add to cart functionality', steps: '1. Select product → 2. Click Add to Cart → 3. Verify cart count updates → 4. Verify cart contents' },
+                { id: 'TC-005', title: 'Verify checkout with valid payment', steps: '1. Proceed to checkout → 2. Enter shipping info → 3. Enter valid payment → 4. Confirm order → 5. Verify confirmation' }
+            ];
+
+            // ===== State Management =====
+            const state = {
+                results: {} // { 'TC-001': 'passed' | 'failed' }
+            };
+
+            // ===== DOM Elements =====
+            const checklistEl = document.getElementById('test-checklist');
+            const passedCountEl = document.getElementById('passed-count');
+            const failedCountEl = document.getElementById('failed-count');
+            const pendingCountEl = document.getElementById('pending-count');
+
+            // ===== Render Functions =====
+            function renderChecklist() {
+                checklistEl.innerHTML = testCases.map(tc => {
+                    const result = state.results[tc.id];
+                    const isPassed = result === 'passed';
+                    const isFailed = result === 'failed';
+                    const pending = !result;
+
+                    return `
+                        <article class="test-case ${isPassed ? 'passed' : ''} ${isFailed ? 'failed' : ''}" data-test-id="${tc.id}" role="listitem">
+                            <label>
+                                <input type="radio" name="${tc.id}" value="passed" ${isPassed ? 'checked' : ''} aria-label="Mark ${tc.id} as passed">
+                                <span class="radio-custom" aria-hidden="true"></span>
+                            </label>
+                            <div class="test-case-info">
+                                <div class="test-case-id">${tc.id}</div>
+                                <div class="test-case-title">${tc.title}</div>
+                                <div class="test-case-steps">${tc.steps}</div>
+                            </div>
+                            <div class="test-case-actions">
+                                <button type="button" class="btn-small pass-btn" data-test-id="${tc.id}" data-result="passed" aria-label="Mark ${tc.id} as passed">Pass</button>
+                                <button type="button" class="btn-small fail-btn" data-test-id="${tc.id}" data-result="failed" aria-label="Mark ${tc.id} as failed">Fail</button>
+                                ${result ? `<button type="button" class="btn-small" data-test-id="${tc.id}" data-result="clear" aria-label="Clear ${tc.id} result">Clear</button>` : ''}
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                // Attach event listeners after render
+                attachListeners();
+                updateSummary();
+            }
+
+            function attachListeners() {
+                // Radio button changes
+                checklistEl.querySelectorAll('input[type="radio"]').forEach(radio => {
+                    radio.addEventListener('change', handleRadioChange);
+                });
+
+                // Button clicks
+                checklistEl.querySelectorAll('.btn-small').forEach(btn => {
+                    btn.addEventListener('click', handleButtonClick);
+                });
+            }
+
+            function handleRadioChange(e) {
+                const testId = e.target.name;
+                const value = e.target.value;
+                updateResult(testId, value);
+            }
+
+            function handleButtonClick(e) {
+                const testId = e.target.dataset.testId;
+                const result = e.target.dataset.result;
+                if (result === 'clear') {
+                    delete state.results[testId];
+                } else {
+                    state.results[testId] = result;
+                }
+                renderChecklist();
+            }
+
+            function updateResult(testId, result) {
+                state.results[testId] = result;
+                updateSummary();
+
+                // Update visual state immediately
+                const testCaseEl = checklistEl.querySelector(`[data-test-id="${testId}"]`);
+                if (testCaseEl) {
+                    testCaseEl.classList.remove('passed', 'failed');
+                    if (result === 'passed') testCaseEl.classList.add('passed');
+                    if (result === 'failed') testCaseEl.classList.add('failed');
+                }
+            }
+
+            function updateSummary() {
+                const passed = Object.values(state.results).filter(r => r === 'passed').length;
+                const failed = Object.values(state.results).filter(r => r === 'failed').length;
+                const pending = testCases.length - passed - failed;
+
+                passedCountEl.textContent = passed;
+                failedCountEl.textContent = failed;
+                pendingCountEl.textContent = pending;
+            }
+
+            // ===== Initialize =====
+            document.addEventListener('DOMContentLoaded', () => {
+                renderChecklist();
+
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+
+                // Add entrance animation to cards on scroll
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.card, .skill-card, .project-card').forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                    observer.observe(el);
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

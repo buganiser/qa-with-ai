@@ -1,0 +1,45 @@
+{
+  "name": "playwright-8-layer-architecture",
+  "version": "1.0.0",
+  "description": "Playwright E2E Testing with 8-Layer Architecture",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:auth": "playwright test tests/auth.setup.ts",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari",
+    "test:ci": "playwright test --reporter=github",
+    "test:report": "playwright show-report",
+    "test:trace": "playwright show-trace",
+    "codegen": "playwright codegen",
+    "install:browsers": "playwright install",
+    "install:deps": "playwright install-deps",
+    "lint": "eslint tests --ext .ts",
+    "format": "prettier --write tests/**/*.ts"
+  },
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "automation",
+    "page-object-model",
+    "8-layer-architecture"
+  ],
+  "author": "Testing Exploring",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
